@@ -1,6 +1,15 @@
-'use client'
-import { Calendar, Home, Inbox, Search, Settings,Target,Music, User,Youtube} from "lucide-react"
-import { Button } from "@/components/ui/button"
+"use client";
+import {
+  Calendar,
+  Home,
+  Inbox,
+  Search,
+  Settings,
+  Target,
+  Music,
+  User,
+  Youtube,
+} from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
@@ -10,9 +19,9 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
 
-import { useState} from 'react'
+import { useState } from "react";
 // Menu items.
 const items = [
   {
@@ -21,20 +30,20 @@ const items = [
     icon: Home,
   },
   {
-title:"Workspace",
-url:"#",
-icon: Target
+    title: "Workspace",
+    url: "#",
+    icon: Target,
   },
   {
-    title:"Music",
-    url:"#",
-    icon: Music
-      },
-      {
-        title:"User",
-        url:"#",
-        icon: User
-          },
+    title: "Music",
+    url: "#",
+    icon: Music,
+  },
+  {
+    title: "User",
+    url: "#",
+    icon: User,
+  },
   {
     title: "Inbox",
     url: "#",
@@ -60,26 +69,34 @@ icon: Target
     url: "#",
     icon: Settings,
   },
-]
+];
 
 export function AppSidebar() {
-    const [activeButton, setActiveButton] = useState("Home");
-    console.log(activeButton);
+  const [activeButton, setActiveButton] = useState("Home");
+  console.log(activeButton);
   return (
     <Sidebar className="w-15 " collapsible="none">
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel>Application</SidebarGroupLabel>
           <SidebarGroupContent>
-            <SidebarMenu className="flex border-solid h-full" >
+            <SidebarMenu className="flex border-solid h-full">
               {items.map((item) => (
                 <SidebarMenuItem className="my-2" key={item.title}>
                   <SidebarMenuButton asChild>
-
-             <a href={item.url} className='text-center' onClick={()=> setActiveButton(item.title)} style={{ padding: '27px 25px',
-                borderRadius: '10px', backgroundColor: item.title === activeButton ?'#1bb96c':"#f1f1f6",color:item.title === activeButton ?'white':"black"}} >
-                       <item.icon  />
-            
+                    <a
+                      href={item.url}
+                      className="text-center"
+                      onClick={() => setActiveButton(item.title)}
+                      style={{
+                        padding: "27px 25px",
+                        borderRadius: "10px",
+                        backgroundColor:
+                          item.title === activeButton ? "#1bb96c" : "#f1f1f6",
+                        color: item.title === activeButton ? "white" : "black",
+                      }}
+                    >
+                      <item.icon />
                     </a>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -89,5 +106,5 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
     </Sidebar>
-  )
+  );
 }
