@@ -10,7 +10,16 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-const CARD_DATA = [
+
+// Define the type for card data
+interface CardData {
+  image: React.ReactNode; // Type for JSX elements
+  heading: string;
+  description: string;
+  backgroundImage: string;
+}
+
+const CARD_DATA: CardData[] = [
   {
     image: <Newspaper size={48} />,
     heading: "URL to Video",
@@ -26,12 +35,21 @@ const CARD_DATA = [
       "linear-gradient(200deg, rgba(133, 64, 245, 0.8), rgb(133, 64, 245))",
   },
 ];
-export const CardComponent = ({
+
+// Props type for CardComponent
+interface CardComponentProps {
+  image: React.ReactNode;
+  heading: string;
+  backgroundImage: string;
+  description: string;
+}
+
+export const CardComponent: React.FC<CardComponentProps> = ({
   image,
   heading,
   backgroundImage,
   description,
-}: any) => {
+}) => {
   return (
     <Dialog>
       <DialogTrigger className="w-full">
@@ -60,19 +78,19 @@ export const CardComponent = ({
 
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>{heading} </DialogTitle>
+          <DialogTitle>{heading}</DialogTitle>
         </DialogHeader>
         <div className="py-4">
           <div className="grid gap-4">
             <div className="space-y-2">
-              <h4 className="font-medium leading-none"> Dimensions </h4>
+              <h4 className="font-medium leading-none">Dimensions</h4>
               <p className="text-sm text-muted-foreground">
                 Set the dimensions for the layer.
               </p>
             </div>
             <div className="grid gap-2">
               <div className="grid grid-cols-3 items-center gap-4">
-                <Label htmlFor="width"> Width </Label>
+                <Label htmlFor="width">Width</Label>
                 <Input
                   id="width"
                   defaultValue="100%"
@@ -80,7 +98,7 @@ export const CardComponent = ({
                 />
               </div>
               <div className="grid grid-cols-3 items-center gap-4">
-                <Label htmlFor="maxWidth"> Max.width </Label>
+                <Label htmlFor="maxWidth">Max.width</Label>
                 <Input
                   id="maxWidth"
                   defaultValue="300px"
@@ -88,7 +106,7 @@ export const CardComponent = ({
                 />
               </div>
               <div className="grid grid-cols-3 items-center gap-4">
-                <Label htmlFor="height"> Height </Label>
+                <Label htmlFor="height">Height</Label>
                 <Input
                   id="height"
                   defaultValue="25px"
@@ -96,7 +114,7 @@ export const CardComponent = ({
                 />
               </div>
               <div className="grid grid-cols-3 items-center gap-4">
-                <Label htmlFor="maxHeight"> Max.height </Label>
+                <Label htmlFor="maxHeight">Max.height</Label>
                 <Input
                   id="maxHeight"
                   defaultValue="none"
@@ -111,7 +129,7 @@ export const CardComponent = ({
   );
 };
 
-const MainPage = () => {
+const MainPage: React.FC = () => {
   return (
     <div className="flex gap-4">
       {CARD_DATA.map((props, index) => (
