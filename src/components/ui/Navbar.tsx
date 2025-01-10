@@ -1,17 +1,9 @@
-"use client"
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { Button } from "@/components/ui/button"
-
-interface NavItem {
-  label: string;
-  href: string;
-}
+"use client";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
-  const pathname = usePathname();
-
-
   return (
     <nav className="bg-white shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -24,8 +16,7 @@ const Navbar = () => {
           </div>
 
           {/* Navigation Items */}
-            <Button> Automations </Button>
-
+          <Button> Automations </Button>
         </div>
       </div>
     </nav>
